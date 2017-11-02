@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GenericSample
 {
-    public static class QueueExtensions
+    public static class ListExtensions
     {
         public static Queue<T> ToQueue<T>(this List<T> source)
         {
