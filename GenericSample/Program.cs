@@ -9,8 +9,8 @@ namespace GenericSample
         static void Main(string[] args)
         {
             TestIntQueue();
-
             TestPersonQueue();
+            TestExtensionMethod();
             Console.ReadKey();
         }
 
@@ -23,10 +23,6 @@ namespace GenericSample
             intQueue.Enque(4);
             intQueue.Enque(5);
 
-            Console.WriteLine("toList extension: ");
-            var listOfQueue = intQueue.ToList();
-            listOfQueue.ForEach(elem => Console.Write($"{elem}, "));
-
             Console.Write("\n");
             Console.WriteLine("Queue:");
             Console.WriteLine(intQueue.Dequeue());
@@ -36,24 +32,29 @@ namespace GenericSample
 
         public static void TestPersonQueue()
         {
-            Queue<Person> peronQueue = new Queue<Person>(10);
-            peronQueue.Enque(new Person(){Name = "Anna"});
-            peronQueue.Enque(new Person() { Name = "Barbara" });
-            peronQueue.Enque(new Person() { Name = "Cecylia" });
+            Queue<Person> personQueue = new Queue<Person>(10);
+            personQueue.Enque(new Person(){Name = "Ann"});
+            personQueue.Enque(new Person() { Name = "Bernard" });
+            personQueue.Enque(new Person() { Name = "Christopher" });
 
-            peronQueue.Enque(new Person() { Name = "Dominika" });
-            peronQueue.Enque(new Person() { Name = "Ewa" });
-
-            Console.WriteLine("PersonQueue: ");
-            Console.WriteLine("toList extension: ");
-            var listOfQueue = peronQueue.ToList();
-            listOfQueue.ForEach(elem => Console.Write($"{elem.Name}, "));
+            personQueue.Enque(new Person() { Name = "Donny" });
+            personQueue.Enque(new Person() { Name = "Elizabeth" });
 
             Console.Write("\n");
             Console.WriteLine("Queue:");
-            Console.WriteLine(peronQueue.Dequeue().Name);
-            Console.WriteLine(peronQueue.Dequeue().Name);
-            Console.WriteLine(peronQueue.Dequeue().Name);
+            Console.WriteLine(personQueue.Dequeue().Name);
+            Console.WriteLine(personQueue.Dequeue().Name);
+            Console.WriteLine(personQueue.Dequeue().Name);
+        }
+
+        public static void TestExtensionMethod()
+        {
+            Console.WriteLine("ToQueue method");
+            List<int> list = new List<int>(){2, 3, 5, 7};
+            var queue = list.ToQueue();
+            Console.WriteLine(queue.Dequeue());
+            Console.WriteLine(queue.Dequeue());
+            Console.WriteLine(queue.Dequeue());
         }
     }
 }
