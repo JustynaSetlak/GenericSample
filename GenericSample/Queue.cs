@@ -31,7 +31,10 @@ namespace GenericSample
 
         public void Enque(T item)
         {
-            if (IsFull()) throw new Exception("Queue is full");
+            if (IsFull())
+            {
+                throw new InvalidOperationException("Queue is full");
+            }
             _data[_last] = item;
             _count++;
             _last = (++_last) % Size;
@@ -39,7 +42,10 @@ namespace GenericSample
 
         public T Dequeue()
         {
-            if(IsEmpty()) throw new Exception("Queue is empty");
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("Queue is empty");
+            }
             T element = _data[_first];
             _data[_first] = default(T);
             _count--;
